@@ -1,0 +1,76 @@
+<!-- This is an HTML comment
+<html>
+<head>
+    <title>Face Photo Finder</title>
+</head>
+<body>
+    <h2>Upload Your Photo</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="photo" required>
+        <button type="submit">Find My Photos</button>
+    </form>
+
+    <h3>Matched Photos:</h3>
+    {% for img in results %}
+        <img src="/matches/{{img}}" width="150">
+    {% endfor %}
+</body>
+</html>
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Face Photo Finder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1 class="title">
+        <span>Face Photo</span> Finder
+    </h1>
+
+    <p class="subtitle">
+        Upload a photo and find all matching faces instantly.
+    </p>
+
+    <div class="features">
+        <div class="feature-card">⚡<h3>Fast</h3><p>Instant results</p></div>
+        <div class="feature-card">🔒<h3>Secure</h3><p>Private processing</p></div>
+        <div class="feature-card">🔍<h3>Accurate</h3><p>AI powered</p></div>
+    </div>
+
+    <div class="upload-box">
+        <form method="POST" enctype="multipart/form-data">
+
+            <label class="upload-label">
+                📷
+                <span>Upload Your Photo</span>
+                <small>Click to browse</small>
+                <input type="file" name="photo" required>
+            </label>
+
+            <button type="submit" class="btn">Find My Photos</button>
+
+        </form>
+
+        <p class="file-info">JPG / PNG only</p>
+    </div>
+
+    <div class="results">
+        <h2>Matched Photos</h2>
+        <div class="gallery">
+            {% for img in results %}
+                <img src="/matches/{{ img }}" alt="Match">
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
